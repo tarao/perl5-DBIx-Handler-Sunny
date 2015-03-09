@@ -2,6 +2,8 @@ package DBIx::Handler::Sunny;
 use strict;
 use warnings;
 
+our $VERSION = '0.01';
+
 # cpan
 use parent qw(DBIx::Handler);
 
@@ -49,3 +51,72 @@ sub last_insert_id {
 
 1;
 __END__
+
+=head1 NAME
+
+DBIx::Handler::Sunny - DBIx::Handler meets Sunny
+
+=head1 SYNOPSIS
+
+    use DBIx::Handler::Sunny;
+    my $handler = DBIx::Handler::Sunny->new($dsn, $user, $pass, $opts);
+    my $col = $handler->select_one('SELECT ...');
+    my $row = $handler->select_row('SELECT ...');
+    my $rows = $handler->select_all('SELECT ...');
+
+=head1 DESCRIPTION
+
+C<DBIx::Handler::Sunny> is a DBI handler with some useful interface.
+It ads L<DBIx::Handler> to methods for selecting a column or row(s).
+
+The methods are taken from L<DBIx::Sunny>.
+
+=head1 METHODS
+
+=over 4
+
+=item select_one
+
+    $col = $handler->select_one($query, @bind);
+
+Shortcut for C<prepare>, C<execute> and C<fetchrow_arrayref->[0]>.
+
+=item select_row
+
+    $row = $handler->select_row($query, @bind);
+
+Shortcut for C<prepare>, C<execute> and C<fetchrow_hashref>.
+
+=item select_all
+
+    $rows = $handler->select_all($query, @bind);
+
+Shortcut for C<prepare>, C<execute> and C<selectall_arrayref(..., { Slice => {} }, ...)>.
+
+=item last_insert_id
+
+    $id = $handler->last_insert_id
+
+Retrieve the last insert ID by suitable way for the DB driver.
+Supported drivers are SQLite and MySQL.
+
+=back
+
+=head1 SEE ALSO
+
+L<DBIx::Handler>
+
+L<DBIx::Sunny>
+
+=head1 LICENSE
+
+Copyright (C) INA Lintaro
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+INA Lintaro E<lt>tarao.gnn@gmail.comE<gt>
+
+=cut
