@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tarao/perl5-DBIx-Handler-Sunny.svg?branch=master)](https://travis-ci.org/tarao/perl5-DBIx-Handler-Sunny)
 # NAME
 
 DBIx::Handler::Sunny - DBIx::Handler meets Sunny
