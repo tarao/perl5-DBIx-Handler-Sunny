@@ -79,7 +79,7 @@ The methods are taken from L<DBIx::Sunny>.
 
     $col = $handler->select_one($query, @bind);
 
-Shortcut for C<prepare>, C<execute> and C<fetchrow_arrayref->[0]>.
+Shortcut for C<prepare>, C<execute> and C<fetchrow_arrayref-E<gt>[0]>.
 
 =item select_row
 

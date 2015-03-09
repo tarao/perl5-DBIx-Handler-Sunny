@@ -23,7 +23,7 @@ The methods are taken from [DBIx::Sunny](https://metacpan.org/pod/DBIx::Sunny).
 
         $col = $handler->select_one($query, @bind);
 
-    Shortcut for `prepare`, `execute` and `fetchrow_arrayref-`\[0\]>.
+    Shortcut for `prepare`, `execute` and `fetchrow_arrayref->[0]`.
 
 - select\_row
 
