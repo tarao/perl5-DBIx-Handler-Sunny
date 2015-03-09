@@ -10,4 +10,6 @@ on 'test' => sub {
     requires 'Class::Accessor::Lite';
     requires 'Test::Requires';
     suggests 'DBD::SQLite';
+    suggests 'Test::mysqld';
+    suggests 'Test::TCP';
 };

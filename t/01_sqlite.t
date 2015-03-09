@@ -1,13 +1,12 @@
 package t::DBIx::Handler::Sunny;
 use parent qw(Test::Class);
 use Test::More;
-use Test::Deep qw(cmp_deeply isa);
-use Test::Fatal qw(dies_ok);
 use Test::Requires 'DBD::SQLite';
 use Class::Accessor::Lite (
     ro => ['handler'],
 );
 use DBIx::Handler::Sunny;
+use t::query;
 
 my $db_file = './query_test.db';
 
@@ -31,26 +30,6 @@ sub _prepare_db : Test(startup => 3) {
 
 sub _cleanup_db : Test(shutdown) {
     unlink $db_file;
-}
-
-sub select_one : Tests {
-    my $db = shift->handler;
-    ok $db;
-    is $db->select_one('SELECT :a + :b', { a => 1, b => 2 }), 3;
-}
-
-sub select_row : Tests {
-    my $db = shift->handler;
-    cmp_deeply
-        $db->select_row('SELECT :a + :b AS c', { a => 1, b => 2 }),
-        { c => 3 };
-}
-
-sub select_all : Tests {
-    my $db = shift->handler;
-    cmp_deeply
-        $db->select_all('SELECT :a + :b AS c', { a => 1, b => 2 }),
-        [ { c => 3 } ];
 }
 
 sub last_insert_id : Tests {
