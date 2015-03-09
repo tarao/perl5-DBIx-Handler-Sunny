@@ -91,7 +91,7 @@ Shortcut for C<prepare>, C<execute> and C<fetchrow_hashref>.
 
     $rows = $handler->select_all($query, @bind);
 
-Shortcut for C<prepare>, C<execute> and C<selectall_arrayref(..., { Slice => {} }, ...)>.
+Shortcut for C<prepare>, C<execute> and C<selectall_arrayref(..., { Slice =E<gt> {} }, ...)>.
 
 =item last_insert_id
 

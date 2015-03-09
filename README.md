@@ -35,7 +35,7 @@ The methods are taken from [DBIx::Sunny](https://metacpan.org/pod/DBIx::Sunny).
 
         $rows = $handler->select_all($query, @bind);
 
-    Shortcut for `prepare`, `execute` and `selectall_arrayref(..., { Slice =` {} }, ...)>.
+    Shortcut for `prepare`, `execute` and `selectall_arrayref(..., { Slice => {} }, ...)`.
 
 - last\_insert\_id
 
