@@ -49,6 +49,11 @@ sub last_insert_id {
     $self->dbh->last_insert_id(@_);
 }
 
+sub txn {
+    my ($self, $coderef) = @_;
+    $self->SUPER::txn(sub { $coderef->($self) });
+}
+
 1;
 __END__
 

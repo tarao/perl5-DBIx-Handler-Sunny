@@ -8,7 +8,7 @@ use Exporter qw(import);
 
 our @EXPORT = qw();
 our @TESTS = qw(
-    select_one select_row select_all
+    select_one select_row select_all txn
 );
 
 {
@@ -43,6 +43,31 @@ sub select_all {
     cmp_deeply
         $db->select_all('SELECT :a + :b AS c', { a => 1, b => 2 }),
         [ { c => 3 } ];
+}
+
+sub txn {
+    my $db = shift->handler;
+
+    ok !$db->in_txn;
+    $db->txn(sub {
+        my $dbh = shift;
+        ok $dbh->in_txn;
+        isa $dbh, 'DBIx::Handler::Sunny';
+    });
+
+    local $@;
+    eval {
+        $db->txn(sub {
+            my $dbh = shift;
+            $dbh->query(
+                q(INSERT INTO query_test (name) VALUES ('sunnykun'))
+            );
+            die 'rollback!';
+        });
+    };
+
+    like $@, qr/\Arollback!/;
+    ok !$db->select_one(q(SELECT 1 FROM query_test WHERE name = 'sunnykun'));
 }
 
 1;
