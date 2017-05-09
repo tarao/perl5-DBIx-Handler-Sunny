@@ -2,5 +2,7 @@ Revision history for Perl extension DBIx-Handler-Sunny
 
 {{$NEXT}}
 
+0.02 2017-05-09T01:37:21Z
+    - Support txn method.
+0.01 2015-03-09T11:44:12Z
     - original version
-

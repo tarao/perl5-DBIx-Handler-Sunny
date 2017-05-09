@@ -4,7 +4,7 @@
       "INA Lintaro <tarao.gnn@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.3.0, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "Minilla/v3.0.10, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -75,5 +75,9 @@
          "web" : "https://github.com/tarao/perl5-DBIx-Handler-Sunny"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02",
+   "x_contributors" : [
+      "pokutuna <popopopopokutuna@gmail.com>"
+   ],
+   "x_serialization_backend" : "JSON::PP version 2.27400"
 }
